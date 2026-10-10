@@ -33,3 +33,10 @@ crash.log
 
 # Logs
 *.log
+
+# Relatórios de execução e validação
+reports/
+
+# Relatórios antigos na raiz
+ruff_resultado*.txt
+pytest_resultado*.txt

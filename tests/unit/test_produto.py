@@ -4,6 +4,7 @@ import pytest
 
 from product_query.domain.produto import Produto
 
+
 def test_deve_criar_produto_valido():
     produto = Produto(
         codigo_produto="1001",
@@ -26,13 +27,10 @@ def test_deve_criar_produto_com_codigo_rds():
 
 
 def test_deve_rejeitar_codigo_produto_vazio():
-    with pytest.raises(
-        ValueError,
-        match="O tipo do produto é obrigatório"
-    ):
+    with pytest.raises(ValueError, match="O código do produto é obrigatório"):
         Produto(
-            codigo_produto="1001",
-            tipo_produto="",
+            codigo_produto="",
+            tipo_produto="FUNDIDO",
         )
 
 
@@ -55,7 +53,7 @@ def test_produto_deve_ser_imutavel():
     )
 
     with pytest.raises(FrozenInstanceError):
-        setattr(produto, "codigo_produto" ,"2002")
+        setattr(produto, "codigo_produto", "2002")  # noqa: B010
 
 
 def test_deve_rejeitar_tipo_produto_vazio():
